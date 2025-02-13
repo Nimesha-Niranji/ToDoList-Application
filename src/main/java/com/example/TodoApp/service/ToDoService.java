@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+//Service layer forToDo application
 @Service
 public class ToDoService {
 	
@@ -28,13 +29,13 @@ public class ToDoService {
 	public boolean updateStatus(Long id) {
 		ToDo todo = getToDoItemById(id);
 		todo.setStatus("Completed");
-		
+		// Return false if To-Do item does not exist
 		return saveOrUpdateToDoItem(todo);
 	}
 	
 	public boolean saveOrUpdateToDoItem(ToDo todo) {
 		ToDo updatedObj = repo.save(todo);
-		
+		// Check if object exists after save
 		if (getToDoItemById(updatedObj.getId()) != null) {
 			return true;
 		}
@@ -43,7 +44,7 @@ public class ToDoService {
 	}
 	
 	public boolean deleteToDoItem(Long id) {
-		repo.deleteById(id);
+		repo.deleteById(id);// Verify if deletion was successful
 		
 		if (repo.findById(id).isEmpty()) {
 			return true;

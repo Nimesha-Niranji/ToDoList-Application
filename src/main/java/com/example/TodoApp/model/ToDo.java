@@ -34,10 +34,11 @@ public class ToDo {
     @Nonnull
     private String status;
 
+    //Default constructor
     public ToDo() {
 
     }
-
+    // Getters and Setters
     public Long getId() {
         return id;
     }
